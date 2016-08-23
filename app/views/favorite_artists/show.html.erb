@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @favorite_artist.artist %>
+</p>
+
+<%= link_to 'Edit', edit_favorite_artist_path(@favorite_artist) %> |
+<%= link_to 'Back', favorite_artists_path %>

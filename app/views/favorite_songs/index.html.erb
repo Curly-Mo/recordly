@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Favorite Songs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Song</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @favorite_songs.each do |favorite_song| %>
+      <tr>
+        <td><%= favorite_song.song.title %></td>
+        <td><%= link_to 'Show', favorite_song %></td>
+        <td><%= link_to 'Edit', edit_favorite_song_path(favorite_song) %></td>
+        <td><%= link_to 'Destroy', favorite_song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Favorite Song', new_favorite_song_path %>

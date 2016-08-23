@@ -1,0 +1,1 @@
+json.partial! "favorite_albums/favorite_album", favorite_album: @favorite_album

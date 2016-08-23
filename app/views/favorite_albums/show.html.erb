@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Album:</strong>
+  <%= @favorite_album.album %>
+</p>
+
+<%= link_to 'Edit', edit_favorite_album_path(@favorite_album) %> |
+<%= link_to 'Back', favorite_albums_path %>

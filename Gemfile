@@ -8,8 +8,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'rspotify'
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'binding_of_caller'
 end
 group :development do
   gem 'web-console'

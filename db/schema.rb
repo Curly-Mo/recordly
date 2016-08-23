@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822222807) do
+ActiveRecord::Schema.define(version: 20160823040548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,48 @@ ActiveRecord::Schema.define(version: 20160822222807) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.string   "image"
     t.index ["user_id"], name: "index_artists_on_user_id", using: :btree
+  end
+
+  create_table "favorite_albums", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_favorite_albums_on_album_id", using: :btree
+    t.index ["user_id"], name: "index_favorite_albums_on_user_id", using: :btree
+  end
+
+  create_table "favorite_artists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_favorite_artists_on_artist_id", using: :btree
+    t.index ["user_id"], name: "index_favorite_artists_on_user_id", using: :btree
+  end
+
+  create_table "favorite_songs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["song_id"], name: "index_favorite_songs_on_song_id", using: :btree
+    t.index ["user_id"], name: "index_favorite_songs_on_user_id", using: :btree
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "artist_id"
+    t.integer  "album_id"
+    t.integer  "song_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_favorites_on_album_id", using: :btree
+    t.index ["artist_id"], name: "index_favorites_on_artist_id", using: :btree
+    t.index ["song_id"], name: "index_favorites_on_song_id", using: :btree
+    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
   end
 
   create_table "songs", force: :cascade do |t|
@@ -59,5 +100,15 @@ ActiveRecord::Schema.define(version: 20160822222807) do
 
   add_foreign_key "albums", "artists"
   add_foreign_key "artists", "users"
+  add_foreign_key "favorite_albums", "albums"
+  add_foreign_key "favorite_albums", "users"
+  add_foreign_key "favorite_artists", "artists"
+  add_foreign_key "favorite_artists", "users"
+  add_foreign_key "favorite_songs", "songs"
+  add_foreign_key "favorite_songs", "users"
+  add_foreign_key "favorites", "albums"
+  add_foreign_key "favorites", "artists"
+  add_foreign_key "favorites", "songs"
+  add_foreign_key "favorites", "users"
   add_foreign_key "songs", "albums"
 end
