@@ -3,7 +3,8 @@ class Artist < ApplicationRecord
   after_initialize :set_image, unless: :persisted?
 
   belongs_to :user
-  has_many :albums
+  has_many :albums, :dependent => :destroy
+  has_many :favorite_artists, :dependent => :destroy
   accepts_nested_attributes_for :albums
 
   def set_image

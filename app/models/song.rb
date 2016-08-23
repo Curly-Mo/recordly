@@ -2,6 +2,7 @@ class Song < ApplicationRecord
   after_initialize :set_preview_url, unless: :persisted?
 
   belongs_to :album
+  has_many :favorite_songs, :dependent => :destroy
   delegate :user, :to => :album
 
   def set_preview_url
