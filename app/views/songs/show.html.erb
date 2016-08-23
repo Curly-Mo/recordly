@@ -3,11 +3,19 @@
 <p>
   <strong>Title:</strong>
   <%= @song.title %>
+  <% if @song.preview_url then %>
+      <%= audio_tag(@song.preview_url, controls: true) %>
+  <% end %>
 </p>
 
 <p>
   <strong>Album:</strong>
   <%= @song.album %>
+  <% if @song.album.image then %>
+      <%= image_tag(@song.album.image, size: '300x180') %>
+  <% else %>
+      <%= image_tag(image_url('avatar.png'), size: '300x180') %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_song_path(@song) %> |

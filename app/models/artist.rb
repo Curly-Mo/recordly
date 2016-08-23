@@ -1,5 +1,4 @@
 require 'rspotify'
-include ActionView::Helpers::AssetUrlHelper
 class Artist < ApplicationRecord
   after_initialize :set_image, unless: :persisted?
 
@@ -13,7 +12,7 @@ class Artist < ApplicationRecord
       image = artists.first.images.first
       self.image = image['url']
     rescue
-      self.image  ||= image_url('avatar.png')
+      self.image  ||= nil
     end
   end
 end

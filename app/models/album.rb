@@ -1,7 +1,18 @@
 class Album < ApplicationRecord
-  belongs_to :artist
+  after_initialize :set_image, unless: :persisted?
 
+  belongs_to :artist
   has_many :songs
   accepts_nested_attributes_for :songs
   delegate :user, :to => :artist
+
+  def set_image
+    begin
+      albums = RSpotify::Album.search(self.title)
+      image = albums.first.images.first
+      self.image = image['url']
+    rescue
+      self.image  ||= nil
+    end
+  end
 end
