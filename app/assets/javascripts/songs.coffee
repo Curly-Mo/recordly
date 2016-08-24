@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 #
-$(window).load ->
+ready = ->
   tracks = document.querySelectorAll('.track-item');
   for track in tracks
     track.addEventListener('click', (e) =>
@@ -15,3 +15,5 @@ $(window).load ->
       else
         audio.pause() if audio != null
     );
+
+document.addEventListener("turbolinks:load", ready)

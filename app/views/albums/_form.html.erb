@@ -6,6 +6,13 @@
     <%= f.association :artist %>
   </div>
 
+  <%= f.fields_for :songs do |builder| %>
+    <div class="form-inputs">
+      <%= builder.label :title, "Song" %><br/>
+      <%= builder.input :title, as: :string %>
+    </div>
+  <% end %>
+
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

@@ -61,6 +61,17 @@ class FavoriteArtistsController < ApplicationController
     end
   end
 
+  # DELETE /favorite_artists
+  # DELETE /favorite_artists.json
+  def remove
+    @favorite_artist = FavoriteArtist.find(artist_id: params[:favorite_artist][:artist_id])
+    @favorite_artist.destroy
+    respond_to do |format|
+      format.html { redirect_to favorite_artists_url, notice: 'Favorite artist was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_favorite_artist

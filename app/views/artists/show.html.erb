@@ -10,7 +10,7 @@
 <br>
 <div class="sub-heading"><%= @artist.name %></div>
 <span class="heart-wrapper" title="Favorite this Artist">
-  <input id="artist-heart" type="checkbox" />
+  <input id="artist-heart" type="checkbox" data-id="<%= @artist.id  %>" data-link="artist" <%= 'checked=checked' if @artist.favorite_artists.length > 0 %> />
   <label for="artist-heart" aria-label="like">❤</label>
 </span>
 
@@ -22,8 +22,8 @@
 
     <div class="row">
 
-        <div class="col-lg-12">
-            <h1 class="page-header">Albums</h1>
+        <div class="page-header">
+            <h1>Albums</h1>
         </div>
 
         <% @artist.albums.order(:title).each do |album| %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824010013) do
+ActiveRecord::Schema.define(version: 20160824064131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20160824010013) do
     t.datetime "updated_at", null: false
     t.string   "image"
     t.index ["artist_id"], name: "index_albums_on_artist_id", using: :btree
-    t.index ["title"], name: "index_albums_on_title", unique: true, using: :btree
   end
 
   create_table "artists", force: :cascade do |t|
@@ -32,7 +31,6 @@ ActiveRecord::Schema.define(version: 20160824010013) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.string   "image"
-    t.index ["name"], name: "index_artists_on_name", unique: true, using: :btree
     t.index ["user_id"], name: "index_artists_on_user_id", using: :btree
   end
 
@@ -70,7 +68,6 @@ ActiveRecord::Schema.define(version: 20160824010013) do
     t.datetime "updated_at",  null: false
     t.string   "preview_url"
     t.index ["album_id"], name: "index_songs_on_album_id", using: :btree
-    t.index ["title"], name: "index_songs_on_title", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|

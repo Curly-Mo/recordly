@@ -10,7 +10,7 @@
 <br>
 <div class="sub-heading"><%= @album.title %></div>
 <span class="heart-wrapper" title="Favorite this Album">
-  <input id="artist-heart" type="checkbox" />
+  <input id="artist-heart" type="checkbox" data-id="<%= @album.id  %>" data-link="album" <%= 'checked=checked' if @album.favorite_albums.length > 0 %> />
   <label for="artist-heart" aria-label="like">❤</label>
 </span>
 

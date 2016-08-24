@@ -6,7 +6,7 @@ class Artist < ApplicationRecord
   has_many :albums, :dependent => :destroy
   has_many :favorite_artists, :dependent => :destroy
   accepts_nested_attributes_for :albums
-  validates :name, presence: true, uniqueness: { allow_blank: false, case_sensitive: false }
+  validates :name, presence: true, uniqueness: { allow_blank: false, case_sensitive: false, scope: :user_id}
 
   def set_image
     begin

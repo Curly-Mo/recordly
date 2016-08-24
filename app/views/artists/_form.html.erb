@@ -5,6 +5,13 @@
     <%= f.input :name, as: :string %>
   </div>
 
+  <%= f.fields_for :albums do |builder| %>
+    <div class="form-inputs">
+      <%= builder.label :title, "Album" %><br/>
+      <%= builder.input :title, as: :string %>
+    </div>
+  <% end %>
+
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
