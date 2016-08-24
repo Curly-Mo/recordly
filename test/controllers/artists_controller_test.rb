@@ -32,7 +32,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     login_as(@user)
     assert_difference('Artist.count') do
-      post artists_url, params: { artist: { name: @artist.name } }
+      post artists_url, params: { artist: { name: 'NewArtist' } }
     end
 
     assert_redirected_to artist_url(Artist.last)
