@@ -1,19 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @album.title %>
+<div>
   <% if @album.image then %>
-      <%= image_tag(@album.image, size: '300x180') %>
+      <%= image_tag(@album.image, style: 'height:200px') %>
   <% else %>
-      <%= image_tag(image_url('avatar.png'), size: '300x180') %>
+      <%= image_tag(image_url('avatar.png'), style: 'height:200px') %>
   <% end %>
-</p>
+</div>
+<br>
+<div class="sub-heading"><%= @album.title %></div>
+<span class="heart-wrapper" title="Favorite this Album">
+  <input id="artist-heart" type="checkbox" />
+  <label for="artist-heart" aria-label="like">❤</label>
+</span>
 
-<p>
-  <strong>Artist:</strong>
-  <%= @album.artist %>
-</p>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
+<%= link_to 'Destroy', @album, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<!-- Content -->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h1 class="page-header">Songs</h1>
+        </div>
+
+        <ul class="list-group">
+          <% @album.songs.each do |song| %>
+              <a href="javascript:void(0)" class="list-group-item track-item">
+                <%= [song.album.artist.name, song.album.title, song.title].join(' - ') %>
+                <% if song.preview_url then %>
+                    <%= audio_tag(song.preview_url) %>
+                <% end %>
+              </a>
+          <% end %>
+        </ul>
+    </div>
+
+</div>
+<!-- /.container -->
+<%= link_to 'Add Song', new_song_path %>
