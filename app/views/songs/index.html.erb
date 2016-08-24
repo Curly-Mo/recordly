@@ -17,6 +17,7 @@
                   <% if song.preview_url then %>
                       <%= audio_tag(song.preview_url) %>
                   <% end %>
+                  <span style="float:right;" onclick="window.location.href = '<%= url_for(song) %>'">details</span>
                 </a>
             <% end %>
           </ul>

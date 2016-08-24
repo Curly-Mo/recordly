@@ -6,17 +6,37 @@
   <% if @song.preview_url then %>
       <%= audio_tag(@song.preview_url, controls: true) %>
   <% end %>
+  <span class="heart-wrapper" title="Favorite this Song">
+    <input id="artist-heart" type="checkbox" data-id="<%= @song.id  %>" data-link="song" <%= 'checked=checked data-fav-id=' + @song.favorite_songs.first.id.to_s if @song.favorite_songs.length > 0 %> />
+    <label for="artist-heart" aria-label="like">❤</label>
+  </span>
 </p>
 
-<p>
-  <strong>Album:</strong>
-  <%= @song.album %>
-  <% if @song.album.image then %>
-      <%= image_tag(@song.album.image, size: '300x180') %>
-  <% else %>
-      <%= image_tag(image_url('avatar.png'), size: '300x180') %>
-  <% end %>
-</p>
+<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+    <%= link_to(@song.album, class: 'thumbnail') do %>
+      <div class="sub-heading">Album</div>
+        <% if @song.album.image then %>
+            <%= image_tag(@song.album.image, class: 'img-responsive', alt: @song.album.title) %>
+        <% else %>
+            <%= image_tag(image_url('avatar.png'), class: 'img-responsive', alt: @song.album.title) %>
+        <% end %>
+        <div class="sub-heading"><%= @song.album.title %></div>
+    <% end %>
+</div>
 
-<%= link_to 'Edit', edit_song_path(@song) %> |
-<%= link_to 'Back', songs_path %>
+<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+    <%= link_to(@song.album.artist, class: 'thumbnail') do %>
+      <div class="sub-heading">Artist</div>
+        <% if @song.album.artist.image then %>
+            <%= image_tag(@song.album.artist.image, class: 'img-responsive', alt: @song.album.artist.name) %>
+        <% else %>
+            <%= image_tag(image_url('avatar.png'), class: 'img-responsive', alt: @song.album.artist.name) %>
+        <% end %>
+        <div class="sub-heading"><%= @song.album.artist.name %></div>
+    <% end %>
+</div>
+
+<div style="clear:both;">
+  <%= link_to 'Edit', edit_song_path(@song) %> |
+  <%= link_to 'Destroy', @song, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

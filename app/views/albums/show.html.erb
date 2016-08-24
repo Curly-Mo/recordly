@@ -10,7 +10,7 @@
 <br>
 <div class="sub-heading"><%= @album.title %></div>
 <span class="heart-wrapper" title="Favorite this Album">
-  <input id="artist-heart" type="checkbox" data-id="<%= @album.id  %>" data-link="album" <%= 'checked=checked' if @album.favorite_albums.length > 0 %> />
+  <input id="artist-heart" type="checkbox" data-id="<%= @album.id  %>" data-link="album" <%= 'checked=checked data-fav-id=' + @album.favorite_albums.first.id.to_s if @album.favorite_albums.length > 0 %> />
   <label for="artist-heart" aria-label="like">❤</label>
 </span>
 
@@ -34,6 +34,7 @@
                 <% if song.preview_url then %>
                     <%= audio_tag(song.preview_url) %>
                 <% end %>
+                <span style="float:right;" onclick="window.location.href = '<%= url_for(song) %>'">details</span>
               </a>
           <% end %>
         </ul>

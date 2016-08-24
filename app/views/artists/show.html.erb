@@ -10,7 +10,7 @@
 <br>
 <div class="sub-heading"><%= @artist.name %></div>
 <span class="heart-wrapper" title="Favorite this Artist">
-  <input id="artist-heart" type="checkbox" data-id="<%= @artist.id  %>" data-link="artist" <%= 'checked=checked' if @artist.favorite_artists.length > 0 %> />
+  <input id="artist-heart" type="checkbox" data-id="<%= @artist.id  %>" data-link="artist" <%= 'checked=checked data-fav-id=' + @artist.favorite_artists.first.id.to_s if @artist.favorite_artists.length > 0 %> />
   <label for="artist-heart" aria-label="like">❤</label>
 </span>
 

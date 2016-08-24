@@ -4,18 +4,19 @@ ready = ->
     heart.addEventListener('change', (e) =>
       link = e.target.getAttribute('data-link');
       id = e.target.getAttribute('data-id');
-      if e.target.checked
-        request_type = 'POST';
-      else
-        request_type = 'DELETE';
       type = 'favorite_' + link;
       field_name = link + '_id';
       data = {};
       data[type] = {};
       data[type][field_name] = id;
       console.log(data)
+      if e.target.checked
+        request_type = 'POST';
+        url = '/' + type + 's.json';
+      else
+        request_type = 'DELETE';
+        url = '/' + type + 's/' + e.target.getAttribute('data-fav-id') + '.json';
 
-      url = '/' + type + 's.json';
       xhr = new XMLHttpRequest();
       xhr.open(request_type, url, true);
       token = $('meta[name=csrf-token]').attr('content');
