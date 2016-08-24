@@ -5,20 +5,22 @@
 
     <div class="row">
 
-        <div class="col-lg-12">
-            <h1 class="page-header">Songs</h1>
+        <div class="page-header">
+            <h1>Songs</h1>
         </div>
 
-        <ul class="list-group">
-          <% @songs.each do |song| %>
-              <a href="javascript:void(0)" class="list-group-item track-item">
-                <%= [song.album.artist.name, song.album.title, song.title].join(' - ') %>
-                <% if song.preview_url then %>
-                    <%= audio_tag(song.preview_url) %>
-                <% end %>
-              </a>
-          <% end %>
-        </ul>
+        <div>
+          <ul class="list-group">
+            <% @songs.each do |song| %>
+                <a href="javascript:void(0)" class="list-group-item track-item">
+                  <%= [song.album.artist.name, song.album.title, song.title].join(' - ') %>
+                  <% if song.preview_url then %>
+                      <%= audio_tag(song.preview_url) %>
+                  <% end %>
+                </a>
+            <% end %>
+          </ul>
+        </div>
     </div>
 
 </div>

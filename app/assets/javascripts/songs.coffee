@@ -6,12 +6,12 @@ $(window).load ->
   tracks = document.querySelectorAll('.track-item');
   for track in tracks
     track.addEventListener('click', (e) =>
-      audio = track.querySelector('audio')
-      if audio.paused
+      audio = e.target.querySelector('audio')
+      if audio != null && audio.paused
         audios = document.querySelectorAll('audio');
-        for a in audio
+        for a in audios
           a.pause()
         audio.play()
       else
-        audio.pause()
+        audio.pause() if audio != null
     );

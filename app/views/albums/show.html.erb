@@ -23,12 +23,12 @@
 
     <div class="row">
 
-        <div class="col-lg-12">
-            <h1 class="page-header">Songs</h1>
+        <div class="page-header">
+            <h1>Songs</h1>
         </div>
 
         <ul class="list-group">
-          <% @album.songs.each do |song| %>
+          <% @album.songs.order(:title).each do |song| %>
               <a href="javascript:void(0)" class="list-group-item track-item">
                 <%= [song.album.artist.name, song.album.title, song.title].join(' - ') %>
                 <% if song.preview_url then %>

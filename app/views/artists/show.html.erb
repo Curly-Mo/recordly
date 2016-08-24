@@ -26,7 +26,7 @@
             <h1 class="page-header">Albums</h1>
         </div>
 
-        <% @artist.albums.each do |album| %>
+        <% @artist.albums.order(:title).each do |album| %>
           <div class="col-lg-3 col-md-4 col-xs-6 thumb">
               <%= link_to(album, class: 'thumbnail') do %>
                   <% if album.image then %>

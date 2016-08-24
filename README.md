@@ -1,27 +1,35 @@
-# README
+# Recordly
+Input and store your record collection.  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.  
+Live at: http://recordly.cfahy.com
 
-[![Build Status](https://travis-ci.org/Curly-Mo/recordly.svg?branch=master)](https://travis-ci.org/Curly-Mo/recordly)  
+
+[![Build Status](https://travis-ci.org/Curly-Mo/recordly.svg?branch=master)](https://travis-ci.org/Curly-Mo/recordly) 
 [![Coverage Status](https://coveralls.io/repos/github/Curly-Mo/recordly/badge.svg?branch=master)](https://coveralls.io/github/Curly-Mo/recordly?branch=master)
 
-Things you may want to cover:
 
-* Ruby version
+# Installation
+```
+git clone https://github.com/Curly-Mo/recordly.git
+cd recordly
+bundle install
+```
 
-* System dependencies
 
-* Configuration
+# Setup Database
+```
+psql -c 'create database recordly_development' -U postgres
+```
 
-* Database creation
 
-* Database initialization
+# Run locally
+```
+rails server Puma
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Testing
+```
+RAILS_ENV=test bundle exec rake db:migrate --trace
+RAILS_ENV=test bundle exec rake db:test:prepare
+rails test
+```
