@@ -8,7 +8,7 @@ Live at: http://recordly.cfahy.com
 [![Coverage Status](https://coveralls.io/repos/github/Curly-Mo/recordly/badge.svg?branch=master)](https://coveralls.io/github/Curly-Mo/recordly?branch=master)
 
 
-# Installation
+## Installation
 ```
 git clone https://github.com/Curly-Mo/recordly.git
 cd recordly
@@ -16,18 +16,18 @@ bundle install
 ```
 
 
-# Setup Database
+## Setup Database
 ```
 psql -c 'create database recordly_development' -U postgres
 ```
 
 
-# Run locally
+## Run locally
 ```
 rails server Puma
 ```
 
-# Testing
+## Testing
 ```
 RAILS_ENV=test bundle exec rake db:migrate --trace
 RAILS_ENV=test bundle exec rake db:test:prepare
