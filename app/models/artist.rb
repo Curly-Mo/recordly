@@ -10,8 +10,13 @@ class Artist < ApplicationRecord
   def set_image
     begin
       artists = RSpotify::Artist.search(self.name)
-      image = artists.first.images.first
-      self.image = image['url']
+      artists.each do |artist|
+        if artist.name.casecmp(self.name) == 0
+          image = artist.images.first
+          self.image = image['url']
+          self.name = artist.name
+        end
+      end
     rescue
       self.image  ||= nil
     end

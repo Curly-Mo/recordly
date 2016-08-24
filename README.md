@@ -1,7 +1,9 @@
 # README
 
 This README would normally document whatever steps are necessary to get the
-application up and running.
+application up and running.  
+
+[![Build Status](https://travis-ci.org/Curly-Mo/recordly.svg?branch=master)](https://travis-ci.org/Curly-Mo/recordly)  
 
 Things you may want to cover:
 
